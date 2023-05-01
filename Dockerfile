@@ -20,5 +20,6 @@ RUN sudo apt-get update -y && \
 
 # dind
 RUN curl -fsSL https://get.docker.com | sudo sh
+RUN sudo groupmod -g 998 docker  # FIXME gid mismatch on host
 RUN sudo usermod -a -G docker rundeck
 USER rundeck
