@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN sudo apt-get update -y && \
     sudo apt-get upgrade -y && \
     sudo apt-get install -y --no-install-recommends \
+    apt-utils \
     apt-transport-https \
     iputils-ping \
     ca-certificates \
@@ -16,3 +17,8 @@ RUN sudo apt-add-repository ppa:ansible/ansible
 
 RUN sudo apt-get update -y && \
     sudo apt-get install -y --no-install-recommends ansible-core
+
+# dind
+RUN curl -fsSL https://get.docker.com | sudo sh
+RUN sudo usermod -a -G docker rundeck
+USER rundeck
