@@ -18,6 +18,8 @@ RUN sudo apt-add-repository ppa:ansible/ansible
 RUN sudo apt-get update -y && \
     sudo apt-get install -y --no-install-recommends ansible-core
 
+RUN ansible-galaxy collection install community.docker
+
 # dind
 RUN curl -fsSL https://get.docker.com | sudo sh
 RUN sudo groupmod -g 998 docker  # FIXME gid mismatch on host
